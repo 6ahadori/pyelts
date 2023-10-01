@@ -13,6 +13,7 @@ from selenium.webdriver.firefox.options import Options
 
 # Set Firefox options for headless mode
 options = Options()
+options.add_argument("--headless=new")
 options.headless = True
 
 service = Service(GeckoDriverManager().install())
