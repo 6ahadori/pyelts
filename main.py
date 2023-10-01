@@ -3,21 +3,19 @@ from logging import *
 import time 
 
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.support.ui import WebDriverWait
-from webdriver_manager.firefox import GeckoDriverManager
+from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.firefox.options import Options
 
 # Set Firefox options for headless mode
 options = Options()
 options.add_argument("--headless=new")
-options.headless = True
+options.headless = False
 
-service = Service(GeckoDriverManager().install())
-driver = webdriver.Firefox(service=service, options=options)
+driver = webdriver.Firefox(service=FirefoxService(executable_path="./geckodriver"), options=options)
 basicConfig(level=INFO)
 
 url = "https://ieltstehran.com/computer-delivered-ielts-exam/"
